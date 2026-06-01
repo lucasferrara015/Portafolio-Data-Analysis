@@ -43,4 +43,4 @@ A continuación, se presentan los proyectos desarrollados, organizados por compe
 ## 📈 Roadmap de Aprendizaje y Objetivos
 Mi meta actual es consolidar proyectos que demuestren un dominio de extremo a extremo (*End-to-End*) en proyectos de datos. Estoy abierto/a a feedback, colaboraciones y oportunidades laborales en el sector de tecnología y analítica.
 
-📫 **¿Cómo contactarme?:** [Tu LinkedIn](https://www.linkedin.com/in/lucasferrara-data-comunicacion/) | [Tu Email](mailto:luca015ferrara@gmail.com)
+📫 **¿Cómo contactarme?:** [Mi LinkedIn](https://www.linkedin.com/in/lucasferrara-data-comunicacion/) | [Mi Email](mailto:luca015ferrara@gmail.com)
