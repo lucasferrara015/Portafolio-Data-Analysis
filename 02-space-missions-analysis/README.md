@@ -18,8 +18,12 @@ El volumen de lanzamientos refleja perfectamente la geopolítica mundial. Se ide
 ### 2. Evolución del Costo en el Tiempo
 El análisis financiero demostró que los costos históricos están altamente sesgados debido al secreto gubernamental (alto índice de nulos en las primeras décadas). Las misiones con datos de precio transparente corresponden a la era moderna de transbordadores y contratos comerciales masivos. 
 
+![Evolución del Costo Promedio](./evaluacion_costo_mision.png)
+
 ### 3. Estacionalidad (Meses más populares)
 Se observa una preferencia ligera por meses como **Diciembre y Junio**. En analítica aeroespacial, esto no responde a estaciones meteorológicas tradicionales, sino a la apertura de "ventanas de lanzamiento orbitales" específicas y cierres de asignaciones presupuestarias anuales.
+
+![Lanzamientos por Mes](./lanzamiento_mes.png)
 
 ### 4. Análisis de Seguridad (Éxitos vs. Fracasos)
 A través de un análisis temporal con tablas cruzadas indexadas, se comprobó que **las misiones espaciales se han vuelto radicalmente más seguras**. Las tasas de fracaso del 40% registradas en los años 50 y 60 dieron paso a una industria madura que mantiene niveles de éxito consistentemente superiores al **92%** en la era moderna.
