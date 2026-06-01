@@ -24,7 +24,7 @@ Se observa una preferencia ligera por meses como **Diciembre y Junio**. En anal�
 ### 4. Análisis de Seguridad (Éxitos vs. Fracasos)
 A través de un análisis temporal con tablas cruzadas indexadas, se comprobó que **las misiones espaciales se han vuelto radicalmente más seguras**. Las tasas de fracaso del 40% registradas en los años 50 y 60 dieron paso a una industria madura que mantiene niveles de éxito consistentemente superiores al **92%** en la era moderna.
 
-![Tendencia de Seguridad](./tasa_seguridad.png) *(Reemplaza por el nombre de tu gráfico descargado)*
+![Tendencia de Seguridad](./tasa_seguridad.png) 
 
 ## 📁 Archivos en esta sección
 * `Análisis_de_Misiones_Espaciales.ipynb`: Código fuente con las agrupaciones (`groupby`), tabulaciones cruzadas (`crosstab`) y visualizaciones.
