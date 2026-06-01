@@ -23,7 +23,7 @@ A continuación, se presentan los proyectos desarrollados, organizados por compe
     * **Claves:** Imputación avanzada de nulos, parsing de fechas (`datetime64`), ingeniería de características (*Feature Engineering*) y detección estadística de outliers mediante el método IQR.
 
 ### 2. Análisis Exploratorio de Datos (EDA)
-* **[Proyecto 2: Lanzamientos de Misiones Espaciales ](./02-Analisis-Misiones-Espaciales/)**
+* **[Proyecto 2: Lanzamientos de Misiones Espaciales ](./02-space-missions-analysis/)**
     * **Objetivo:** Identificar patrones históricos, organizaciones dominantes y variaciones de costos temporales en la carrera espacial.
 
 ### 3. Visualización de Datos & Business Intelligence
