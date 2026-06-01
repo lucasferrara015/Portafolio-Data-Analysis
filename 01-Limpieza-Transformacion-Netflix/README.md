@@ -47,6 +47,8 @@ Se aplicó una reducción de dimensiones descartando variables que añadían rui
 Focalizándonos en el catálogo de películas, se extrajo el valor numérico de la columna `duration` (eliminando la cadena ' min'). Utilizando el método del **Rango Intercuartílico (IQR)**, se definieron los umbrales estadísticos de normalidad:
 * **Límite Inferior:** 46.5 minutos.
 * **Límite Superior:** 154.5 minutos.
+  
+![Distribución de Duración de Películas y Outliers](./outliers_duracion.png)
 
 Se identificaron **450 películas atípicas** (muy cortas o muy largas). 
 > **Criterio Analítico:** Se tomó la decisión de *conservar* estos outliers en el dataset final (`netflix_titles_clean.csv`), puesto que representan registros comerciales legítimos (cortometrajes, documentales breves o largometrajes extensos) que no constituyen errores de medición, sino diversidad real del negocio.
