@@ -17,7 +17,7 @@ El estudio tuvo como objetivo principal identificar la situación laboral, los n
 ### 1. Perfil Demográfico y Distribución de Roles
 La muestra exhibe una fuerte concentración de profesionales en etapas tempranas de su carrera, predominantemente insertos en agencias de marketing y medios tradicionales de comunicación.
 * **Años de Experiencia:** La mayoría de los encuestados se encuentra en el rango de 1-3 años de experiencia laboral.
-![Comportamiento de la muestra por años](anos_laboral.png) *(Nota: Si dejas las imágenes sueltas en la carpeta remueve el "/images")*
+![Comportamiento de la muestra por años](./images/anos_laboral.png) *(Nota: Si dejas las imágenes sueltas en la carpeta remueve el "/images")*
 
 * **Roles y Estructuras:** Los roles de *Gestor de Redes Sociales* y *Especialista en Marketing Digital* dominan el terreno de las agencias privadas, mientras que los perfiles tradicionales de *Periodista* se mantienen concentrados casi en exclusiva en medios de comunicación.
 
