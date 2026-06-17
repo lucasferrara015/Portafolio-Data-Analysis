@@ -27,7 +27,7 @@ A continuación, se presentan los proyectos desarrollados, organizados por compe
     * **Objetivo:** Identificar patrones históricos, organizaciones dominantes y variaciones de costos temporales en la carrera espacial.
 
 ### 3. Visualización de Datos & Business Intelligence
-* **[Proyecto 3: Dashboard de Ecommerce (Próximamente)]**
+* **[Proyecto 3: Dashboard de Ecommerce ]**
     * **Objetivo:** Diseñar un cuadro de mando interactivo para analizar KPIs de ventas y comportamiento del consumidor.
 
 ### 4. Ciencia de Datos (Modelado Predictivo)
