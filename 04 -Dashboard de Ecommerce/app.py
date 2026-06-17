@@ -1,21 +1,18 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 import streamlit as st
 
 # Configuración de la página web
 st.set_page_config(page_title="Amazon Market Analytics", layout="wide")
 
-# 1. Cargar los datos 
+# 1. Cargar los datos de forma local y directa
 @st.cache_data
 def load_data():
-    df = pd.read_csv("04 -Dashboard de Ecommerce/amazon_products_clean.csv")
+    # Eliminamos la ruta de la carpeta, dejamos solo el nombre del archivo
+    df = pd.read_csv("amazon_products_clean.csv")
     return df
 
-try:
-    df_visual = load_data()
-except Exception as e:
-    df_visual = pd.read_csv("amazon_products_clean.csv")
+df_visual = load_data()
 
 # 2. Encabezado de la aplicación
 st.title("📊 Amazon Products Market Analysis & Consumer Behavior")
