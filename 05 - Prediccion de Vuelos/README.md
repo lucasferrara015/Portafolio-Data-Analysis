@@ -37,10 +37,12 @@ Para resolver el problema de regresión, se entrenaron tres arquitecturas algor�
 
 ---
 
-## 💡 Conclusión Analítica y Defensa del Modelo Ganador
+## 💡 Conclusión Analítica y Enfoque Comparativo
 
-El resultado de este proyecto arrojó una conclusión técnica sumamente enriquecedora para la toma de decisiones: **K-Neighbors Regressor (KNN) superó a XGBoost alcanzando un 80.07% de precisión**. 
+El resultado de este proyecto demuestra que en la tarificación dinámica no existe un modelo único ideal, sino herramientas con diferentes enfoques de negocio:
 
-Aunque los modelos de ensamble de árboles suelen dominar los datos tabulares, el mercado aerocomercial masivo de este dataset demostró ser altamente repetitivo. Al contar con un volumen denso de datos (+300K registros), el algoritmo KNN logró explotar de manera óptima la similitud física. Ante la consulta de un vuelo nuevo, el modelo localizó con exactitud "vuelos vecinos idénticos" vendidos en el pasado (misma aerolínea, misma anticipación, misma clase), logrando estimar la tarifa real con un error promedio de apenas **\$843.41**.
+* **La Regresión Lineal demostró su obsolescencia** para este problema, confirmando que las tarifas aéreas no siguen patrones lineales simples y requieren algoritmos con capacidad de ramificación.
+* **XGBoost Regressor aportó la mayor capacidad de generalización.** Su estructura basada en árboles de decisión le permite asimilar las reglas globales del mercado de forma robusta, siendo una opción altamente estable para predecir escenarios nuevos o variables.
+* **K-Neighbors Regressor (KNN) ofreció el mayor resultado local.** Al disponer de una masa crítica de datos tan densa (+300K filas), el algoritmo explotó la repetitividad del mercado, encontrando "vuelos del pasado prácticamente idénticos" para clavar el precio con el menor error promedio (\$843.41).
 
-El uso de **Pipelines de Scikit-Learn** implementado en este código garantiza la reproducibilidad del experimento, aislando por completo el procesamiento de datos del entrenamiento y dejando el modelo listo para ser exportado a producción en una arquitectura de microservicios o una *Data App* interactiva.
+Esta comparativa demuestra la importancia de evaluar los modelos no solo por su métrica final, sino por su comportamiento ante la estructura y densidad de los datos disponibles.
