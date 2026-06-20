@@ -42,11 +42,11 @@ A continuación se presentan los proyectos desarrollados, organizados analítica
   * **Objetivo:** Desarrollar un modelo de machine learning (Regresión) para estimar costos tarifarios aéreos basados en estacionalidad y características operativas.
   * **Tecnologías:** Python, Scikit-Learn.
 
-### 5. Ingeniería de Datos (Automatización & Data Warehousing)
-* **[Proyecto 6: Pipeline ETL Automatizado para Monitoreo Global de Streaming (Spotify API)](./06%20-%20Ingenieria%20de%20Datos%20Spotify)**  *proximamente* 
-  * **Objetivo:** Diseñar y construir una arquitectura de datos robusta de extremo a extremo (End-to-End) que extrae diariamente métricas de las listas de reproducción globales más influyentes de Spotify para modelar un Data Warehouse histórico y analizar tendencias de mercado de forma 100% automatizada.
-  * **Modelo de Datos:** Esquema en Estrella (Tablas de Hechos de Rankings Diarios y Dimensiones de Canciones, Artistas y Tiempo).
-  * **Tecnologías Clave:** Python (Spotipy API), SQL (PostgreSQL/SQLite), Apache Airflow (Orquestación), Docker.
+### 5. Ingeniería de Datos (Modelado & Pipelines ETL)
+* **[Proyecto 6: Pipeline ETL para Monitoreo Global de Rankings (Spotify API)](./06%20-%20Ingenieria%20de%20Datos%20Spotify) Proximamente**
+  * **Objetivo:** Diseñar y construir un proceso ETL (Extracción, Transformación y Carga) de extremo a extremo que interactúa con la API oficial de Spotify para recopilar de forma estructurada las listas de éxitos globales, construyendo un histórico analítico para identificar patrones en la industria musical.
+  * **Modelo de Datos:** Esquema en Estrella (Tablas de Hechos para posiciones diarias en el ranking y Dimensiones independientes para Canciones, Artistas y Tiempo).
+  * **Tecnologías Clave:** Python (Spotipy API, Pandas, SQLAlchemy), SQL (MySQL / MySQL Workbench).
 ---
 
 ## 📈 Roadmap de Aprendizaje y Objetivos
