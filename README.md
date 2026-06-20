@@ -38,15 +38,15 @@ A continuación se presentan los proyectos desarrollados, organizados analítica
   * **Claves:** Ingesta y unificación vertical de 104 archivos CSV, aislamiento y remediación de anomalías de calidad de datos (*Outliers* de 9.9 mil millones), cálculo del Coeficiente de Correlación de Pearson (`-0.0043`), visualización en cuadrantes ejecutivos de alta resolución (300 DPI) con mapas de dispersión, líneas de regresión y diagramas de caja (*Boxplots*).
 
 ### 4. Ciencia de Datos (Modelado Predictivo)
-* **[Proyecto 5: Predicción de Precios de Vuelos](https://github.com/lucasferrara015/Portafolio-Data-Analysis) *(Próximamente)***
+* **[Proyecto 5: Predicción de Precios de Vuelos](https://github.com/lucasferrara015/Portafolio-Data-Analysis) 
   * **Objetivo:** Desarrollar un modelo de machine learning (Regresión) para estimar costos tarifarios aéreos basados en estacionalidad y características operativas.
   * **Tecnologías:** Python, Scikit-Learn.
 
-### 5. Ingeniería de Datos (Automatización)
-* **[Proyecto 6: Pipeline ETL con la API de Spotify](https://github.com/lucasferrara015/Portafolio-Data-Analysis) *(Próximamente)***
-  * **Objetivo:** Automatizar la extracción diaria de datos musicales personales creando tablas de hechos y dimensiones bajo una arquitectura limpia.
-  * **Tecnologías:** Python, Requests, SQL.
-
+### 5. Ingeniería de Datos (Automatización & Data Warehousing)
+* **[Proyecto 6: Pipeline ETL Automatizado para Monitoreo Global de Streaming (Spotify API)](./06%20-%20Ingenieria%20de%20Datos%20Spotify)**
+  * **Objetivo:** Diseñar y construir una arquitectura de datos robusta de extremo a extremo (End-to-End) que extrae diariamente métricas de las listas de reproducción globales más influyentes de Spotify para modelar un Data Warehouse histórico y analizar tendencias de mercado de forma 100% automatizada.
+  * **Modelo de Datos:** Esquema en Estrella (Tablas de Hechos de Rankings Diarios y Dimensiones de Canciones, Artistas y Tiempo).
+  * **Tecnologías Clave:** Python (Spotipy API), SQL (PostgreSQL/SQLite), Apache Airflow (Orquestación), Docker.
 ---
 
 ## 📈 Roadmap de Aprendizaje y Objetivos
