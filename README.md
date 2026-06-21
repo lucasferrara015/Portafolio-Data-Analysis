@@ -43,10 +43,10 @@ A continuación se presentan los proyectos desarrollados, organizados analítica
   * **Tecnologías:** Python, Scikit-Learn.
 
 ### 5. Ingeniería de Datos (Modelado & Pipelines ETL)
-* **[Proyecto 6: Pipeline ETL para Monitoreo Global de Rankings (Spotify API)](./06%20-%20Ingenieria%20de%20Datos%20Spotify) Proximamente**
-  * **Objetivo:** Diseñar y construir un proceso ETL (Extracción, Transformación y Carga) de extremo a extremo que interactúa con la API oficial de Spotify para recopilar de forma estructurada las listas de éxitos globales, construyendo un histórico analítico para identificar patrones en la industria musical.
-  * **Modelo de Datos:** Esquema en Estrella (Tablas de Hechos para posiciones diarias en el ranking y Dimensiones independientes para Canciones, Artistas y Tiempo).
-  * **Tecnologías Clave:** Python (Spotipy API, Pandas, SQLAlchemy), SQL (MySQL / MySQL Workbench).
+* **[Proyecto 6: Pipeline ETL para Monitoreo de Tendencias Musicales Globales (Last.fm API)](./06%20-%20Ingenieria%20de%20Datos%20Music)**
+  * **Objetivo:** Diseñar y construir un proceso ETL (Extracción, Transformación y Carga) de extremo a extremo que interactúa con la API de Last.fm para recopilar de forma estructurada los rankings globales de reproducción, modelando un Data Warehouse histórico para identificar patrones en la industria musical.
+  * **Modelo de Datos:** Esquema en Estrella (Tablas de Hechos de conteos diarios de reproducciones y Dimensiones independientes para Canciones, Artistas y Tiempo).
+  * **Tecnologías Clave:** Python (Requests, Pandas, SQLAlchemy), SQL (MySQL / MySQL Workbench).
 ---
 
 ## 📈 Roadmap de Aprendizaje y Objetivos
