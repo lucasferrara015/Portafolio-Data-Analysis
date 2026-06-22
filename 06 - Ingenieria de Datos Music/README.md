@@ -8,6 +8,12 @@ Este proyecto diseña e implementa un pipeline ETL (Extracción, Transformación
 ## 🏗️ Modelo de Datos (Esquema en Estrella)
 Para optimizar las consultas analíticas y garantizar la integridad referencial, la base de datos `lastfm_dw` se estructuró dividiendo los datos descriptivos de las métricas transaccionales diarias.
 
+## 📁 Estructura del Repositorio en esta Carpeta
+* **`pipeline_lastfm.ipynb`**: Script en Python ejecutado en Google Colab para la extracción vía API REST, sanitización de IDs, normalización en DataFrames de Pandas y exportación de la materia prima a archivos CSV.
+* **`queries_y_modelado.sql`**: Script SQL estructurado para MySQL que contiene el Data Definition Language (DDL) del Data Warehouse, la lógica de optimización, índices, emulación de vistas y analítica avanzada.
+
+
+
 ### 📊 Tabla de Hechos (Fact Table)
 * **`fact_global_charts`**: Almacena las métricas cuantitativas del ranking que cambian día a día.
   * `fact_id` (INT AUTO_INCREMENT - Primary Key)
@@ -39,11 +45,13 @@ El pipeline actual procesa de forma eficiente el Top 50 global de manera local. 
 
 ---
 
-## 💡 Insights de Negocio Disponibles (Valor Analítico)
-El diseño dimensional permite que analistas de negocio u herramientas de BI (Power BI / Tableau) ejecuten consultas complejas de alto rendimiento mediante simples `JOINs`. El repositorio incluye scripts SQL con consultas avanzadas preparadas para el histórico:
-* **Permanencia en el Top:** Identificar qué canciones y artistas logran retener el Puesto #1 por más tiempo.
-* **Ratio de Fidelidad (Engagement):** Evaluar qué artistas tienen oyentes más devotos calculando el índice de `Reproducciones totales / Oyentes únicos`.
-* **Análisis de Volatilidad:** Implementación de *Window Functions* (`LAG`) para medir cuántos puestos escala o desciende una canción en comparación con el día anterior.
+## 💡 Optimización Analítica & Consultas Avanzadas (SQL)
+Dentro del archivo `queries_y_modelado.sql` se implementaron soluciones avanzadas orientadas a reportes de alto rendimiento y análisis de series de tiempo:
+
+1. **Emulación de Vista Materializada (`mv_artist_performance_summary`):** Dado que MySQL no cuenta con soporte nativo para *Materialized Views*, se diseñó una tabla física pre-calculada de resumen de performance por artista. Para garantizar la eficiencia, se estructuró una carga incremental utilizando la cláusula `ON DUPLICATE KEY UPDATE`, evitando realizar un escaneo completo (`Table Scan`) y recalculación de JOINs masivos en cada consulta del negocio.
+2. **Cálculo de Volatilidad con Funciones de Ventana (`LAG`):** Se implementó una query analítica utilizando `LAG() OVER (PARTITION BY ... ORDER BY ...)` para contrastar el ranking diario actual de una canción frente al del día anterior, calculando el delta exacto de puestos escalados o descendidos.
+3. **Participación de Mercado (Market Share):** Uso de funciones analíticas de agregación `SUM() OVER (PARTITION BY date_key)` para identificar de manera dinámica qué porcentaje total de oyentes absorbe cada artista por día sobre el tráfico global de la plataforma.
+4. **Índice de Fidelidad (Engagement):** Consultas métricas agrupadas aplicando filtros agregados (`HAVING`) para calcular el ratio de `Reproducciones / Oyentes Únicos`, aislando el comportamiento de "usuarios fanáticos" frente a oyentes casuales.
 
 ---
 
