@@ -137,3 +137,43 @@ INNER JOIN dim_artists a ON f.artist_id = a.artist_id
 GROUP BY s.song_id, s.song_name, a.artist_name
 HAVING `Total Oyentes` > 0
 ORDER BY `Índice Repetición (Fidelidad)` DESC;
+
+-- ----------------------------------------------------------------------------
+-- 4. AUTOMATIZACIÓN EN BASE DE DATOS: STORED PROCEDURE (PL/SQL)
+-- ----------------------------------------------------------------------------
+DELIMITER //
+
+CREATE PROCEDURE sp_refresh_artist_summary()
+BEGIN
+    -- Declaramos un bloque transaccional para asegurar consistencia
+    START TRANSACTION;
+    
+    -- Ejecuta la actualización incremental de nuestra "Vista Materializada"
+    INSERT INTO mv_artist_performance_summary (
+        artist_name, 
+        total_reproducciones_acumuladas, 
+        total_oyentes_unicos, 
+        mejor_posicion_alcanzada, 
+        dias_en_el_top
+    )
+    SELECT 
+        a.artist_name,
+        SUM(f.playcount_daily),
+        SUM(f.listeners_daily),
+        MIN(f.rank_position),
+        COUNT(DISTINCT f.date_key)
+    FROM fact_global_charts f
+    INNER JOIN dim_artists a ON f.artist_id = a.artist_id
+    GROUP BY a.artist_name
+    ON DUPLICATE KEY UPDATE 
+        total_reproducciones_acumuladas = VALUES(total_reproducciones_acumuladas),
+        total_oyentes_unicos = VALUES(total_oyentes_unicos),
+        mejor_posicion_alcanzada = VALUES(mejor_posicion_alcanzada),
+        dias_en_el_top = VALUES(dias_en_el_top);
+        
+    COMMIT;
+END //
+
+DELIMITER ;
+
+-- Para ejecutarlo desde la aplicación o Python: CALL sp_refresh_artist_summary();
