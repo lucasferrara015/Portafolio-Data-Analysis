@@ -1,5 +1,7 @@
 # Pipeline ETL para Monitoreo de Tendencias Musicales Globales (Last.fm API)
 
+![Dashboard del Mercado Musical](./music_market_dashboard.png)
+
 ## 📌 Visión General del Proyecto
 Este proyecto diseña e implementa un pipeline ETL (Extracción, Transformación y Carga) de extremo a extremo que interactúa con la API oficial de Last.fm para capturar diariamente las tendencias de reproducción global (*Global Charts*). El objetivo principal es normalizar estos datos crudos JSON provenientes de internet y modelar un **Data Warehouse (Bodega de Datos) bajo un Esquema en Estrella** dentro de una instancia local de **MySQL**, construyendo una base histórica sólida para análisis de inteligencia competitiva en la industria musical.
 
