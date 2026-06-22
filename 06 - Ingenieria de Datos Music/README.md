@@ -10,8 +10,8 @@ Para optimizar las consultas analíticas y garantizar la integridad referencial,
 
 ## 📁 Estructura del Repositorio en esta Carpeta
 * **`pipeline_lastfm.ipynb`**: Script en Python ejecutado en Google Colab para la extracción vía API REST, sanitización de IDs, normalización en DataFrames de Pandas y exportación de la materia prima a archivos CSV.
-* **`queries_y_modelado.sql`**: Script SQL estructurado para MySQL que contiene el Data Definition Language (DDL) del Data Warehouse, la lógica de optimización, índices, emulación de vistas y analítica avanzada.
-
+* **`queries_y_modelado.sql`**: Script SQL estructurado para MySQL que contiene el Data Definition Language (DDL) del Data Warehouse, la lógica de optimización, índices, emulación de vistas y analítica avanzada, PL-SQL.
+* **`data/`**: Carpeta que contiene las muestras de datos extraídas en formato CSV (`dim_songs.csv`, `dim_artists.csv`, `fact_global_charts.csv`) para permitir la replicabilidad del proyecto.
 
 
 ### 📊 Tabla de Hechos (Fact Table)
