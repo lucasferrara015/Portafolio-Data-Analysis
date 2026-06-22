@@ -10,12 +10,6 @@ Este proyecto diseña e implementa un pipeline ETL (Extracción, Transformación
 ## 🏗️ Modelo de Datos (Esquema en Estrella)
 Para optimizar las consultas analíticas y garantizar la integridad referencial, la base de datos `lastfm_dw` se estructuró dividiendo los datos descriptivos de las métricas transaccionales diarias.
 
-## 📁 Estructura del Repositorio en esta Carpeta
-* **`pipeline_lastfm.ipynb`**: Script en Python ejecutado en Google Colab para la extracción vía API REST, sanitización de IDs, normalización en DataFrames de Pandas y exportación de la materia prima a archivos CSV.
-* **`queries_y_modelado.sql`**: Script SQL estructurado para MySQL que contiene el Data Definition Language (DDL) del Data Warehouse, la lógica de optimización, índices, emulación de vistas y analítica avanzada, PL-SQL.
-* **`data/`**: Carpeta que contiene las muestras de datos extraídas en formato CSV (`dim_songs.csv`, `dim_artists.csv`, `fact_global_charts.csv`) para permitir la replicabilidad del proyecto.
-
-
 ### 📊 Tabla de Hechos (Fact Table)
 * **`fact_global_charts`**: Almacena las métricas cuantitativas del ranking que cambian día a día.
   * `fact_id` (INT AUTO_INCREMENT - Primary Key)
@@ -38,6 +32,13 @@ Para optimizar las consultas analíticas y garantizar la integridad referencial,
 
 ---
 
+## 📁 Estructura del Repositorio en esta Carpeta
+* **`pipeline_lastfm.ipynb`**: Script en Python ejecutado en Google Colab para la extracción vía API REST, sanitización de IDs, análisis estadístico y visualización del Dashboard, normalización en DataFrames de Pandas y exportación de la materia prima a archivos CSV.
+* **`queries_y_modelado.sql`**: Script SQL estructurado para MySQL que contiene el Data Definition Language (DDL) del Data Warehouse, la lógica de optimización, índices, emulación de vistas, analítica avanzada y programación procedimental (Stored Procedures).
+* **`data/`**: Carpeta que contiene las muestras de datos extraídas en formato CSV (`dim_songs.csv`, `dim_artists.csv`, `fact_global_charts.csv`) para permitir la replicabilidad e importación inmediata del proyecto.
+
+---
+
 ## 🚀 Arquitectura Escalable a 1000x (Respuestas Técnicas)
 El pipeline actual procesa de forma eficiente el Top 50 global de manera local. Ante un escenario corporativo donde se requiera escalar este proceso a **1.000 o más rankings/cuentas en paralelo**, se planificó la siguiente migración de arquitectura:
 
@@ -47,17 +48,11 @@ El pipeline actual procesa de forma eficiente el Top 50 global de manera local. 
 
 ---
 
-## 💡 Optimización Analítica & Consultas Avanzadas (SQL)
-Dentro del archivo `queries_y_modelado.sql` se implementaron soluciones avanzadas orientadas a reportes de alto rendimiento y análisis de series de tiempo:
+## 💡 Optimización Analítica & Programación Procedimental (SQL)
+Dentro del archivo `queries_y_modelado.sql` se implementaron soluciones avanzadas orientadas a reportes de alto rendimiento, automatización interna y análisis de series de tiempo:
 
 1. **Emulación de Vista Materializada (`mv_artist_performance_summary`):** Dado que MySQL no cuenta con soporte nativo para *Materialized Views*, se diseñó una tabla física pre-calculada de resumen de performance por artista. Para garantizar la eficiencia, se estructuró una carga incremental utilizando la cláusula `ON DUPLICATE KEY UPDATE`, evitando realizar un escaneo completo (`Table Scan`) y recalculación de JOINs masivos en cada consulta del negocio.
-2. **Cálculo de Volatilidad con Funciones de Ventana (`LAG`):** Se implementó una query analítica utilizando `LAG() OVER (PARTITION BY ... ORDER BY ...)` para contrastar el ranking diario actual de una canción frente al del día anterior, calculando el delta exacto de puestos escalados o descendidos.
-3. **Participación de Mercado (Market Share):** Uso de funciones analíticas de agregación `SUM() OVER (PARTITION BY date_key)` para identificar de manera dinámica qué porcentaje total de oyentes absorbe cada artista por día sobre el tráfico global de la plataforma.
-4. **Índice de Fidelidad (Engagement):** Consultas métricas agrupadas aplicando filtros agregados (`HAVING`) para calcular el ratio de `Reproducciones / Oyentes Únicos`, aislando el comportamiento de "usuarios fanáticos" frente a oyentes casuales.
-
----
-
-## 🛠️ Tecnologías Utilizadas y Valor Técnico
-* **Python (Requests & Pandas):** Consumo de API REST de forma nativa, manejo de payloads JSON, limpieza de strings, hashing/generación de IDs artificiales y normalización tabular.
-* **SQL (MySQL):** Modelado físico de bases de datos relacionales, asignación estricta de tipos de datos, configuración de índices de claves primarias y restricciones de claves foráneas para resguardar la integridad referencial.
-* **MySQL Workbench:** Administración, ingeniería directa y auditoría de datos.
+2. **Automatización Mediante Stored Procedure (SQL Procedimental):** Para gobernar el ciclo de vida de los datos, se programó el procedimiento almacenado `sp_refresh_artist_summary()`. Este componente encapsula la lógica de agregación analítica dentro de un bloque transaccional seguro (`START TRANSACTION / COMMIT`). Su función es actuar como el gancho final (Hook) del pipeline ETL diario, permitiendo que la capa de base de datos refresque de manera autónoma el resumen ejecutivo sin intervención manual externa.
+3. **Cálculo de Volatilidad con Funciones de Ventana (`LAG`):** Se implementó una query analítica utilizando `LAG() OVER (PARTITION BY ... ORDER BY ...)` para contrastar el ranking diario actual de una canción frente al del día anterior, calculando el delta exacto de puestos escalados o descendidos.
+4. **Participación de Mercado (Market Share):** Uso de funciones analíticas de agregación `SUM() OVER (PARTITION BY date_key)` para identificar de manera dinámica qué porcentaje total de oyentes absorbe cada artista por día sobre el tráfico global de la plataforma.
+5. **Índice de Fidelidad (Engagement):** Consultas métricas agrupadas aplicando filtros agregados (`HAVING`) para calcular el ratio de `Reproducciones / Oyentes Únicos`, aislando el comportamiento de "usuarios fanáticos" frente a oyentes casuales.
